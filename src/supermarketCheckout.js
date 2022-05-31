@@ -9,6 +9,18 @@ function getTotalCost (basket) {
   return totalCost
 }
 
-module.exports = {
-  getTotalCost
+function getBasket(basket) {
+  return basket
 }
+
+function getReceipt(basket) {
+  basket.push(`Total cost: ${getTotalCost(basket)}`)
+  return basket
+}
+
+module.exports = {
+  getTotalCost,
+  getReceipt,
+  getBasket
+}
+console.log(getReceipt([{name: 'apple', price: 1, quantity: 3}, {name: 'orange', price: 2, quantity: 1}]))

@@ -1,5 +1,5 @@
 // TEST CODE
-const { getTotalCost } = require('../src/supermarketCheckout.js')
+const { getTotalCost, getReceipt } = require('../src/supermarketCheckout.js')
 
 describe("Supermarket Checkout", () => {
   it("returns 0 if quantity is 0", () => {
@@ -18,5 +18,15 @@ describe("Supermarket Checkout", () => {
     const totalCost = getTotalCost(basket)
     // verify
     expect(totalCost).toEqual(4)
+  })
+
+  it("returns a list of items and total cost", () => {
+    // setup
+    const basket = [{name: 'apple', price: 1, quantity: 3}, {name: 'orange', price: 2, quantity: 1}]
+    const expected = [{name: 'apple', price: 1, quantity: 3}, {name: 'orange', price: 2, quantity: 1}, 'Total cost: 5']
+    // execute
+    const result = getReceipt(basket)
+    // verify
+    expect(result).toEqual(expected)
   })
 })
